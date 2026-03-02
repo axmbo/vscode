@@ -6,6 +6,27 @@
 			"type": "shell",
 			"command": "./.venv/bin/python app.py",
 			"isBackground": false
+		},
+		{
+			"label": "Run Tests",
+			"type": "shell",
+			"command": "./.venv/bin/pytest",
+			"args": ["tests/", "-v"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Tests with Coverage (Terminal)",
+			"type": "shell",
+			"command": "./.venv/bin/pytest",
+			"args": ["tests/", "--cov=app", "--cov-report=term", "-v"],
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Tests with Coverage (HTML Report)",
+			"type": "shell",
+			"command": "./.venv/bin/pytest",
+			"args": ["tests/", "--cov=app", "--cov-report=html", "--cov-report=term", "-v"],
+			"problemMatcher": []
 		}
 	]
 }

@@ -1,1 +1,3 @@
 tasks.db
+.coverage
+__pycache__/
