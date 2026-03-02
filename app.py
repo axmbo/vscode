@@ -20,7 +20,8 @@ class Task(db.Model):
 @app.route('/')
 def index():
     tasks = Task.query.order_by(Task.id).all()
-    return render_template('index.html', tasks=tasks)
+    completed_count = Task.query.filter_by(completed=True).count()
+    return render_template('index.html', tasks=tasks, completed_count=completed_count)
 
 @app.route('/add', methods=['POST'])
 def add_task():
@@ -35,6 +36,12 @@ def add_task():
 def delete_task(task_id):
     task = Task.query.get_or_404(task_id)
     db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+@app.route('/delete-completed')
+def delete_completed_tasks():
+    Task.query.filter_by(completed=True).delete()
     db.session.commit()
     return redirect(url_for('index'))
 

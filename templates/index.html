@@ -23,5 +23,10 @@
       </li>
     {% endfor %}
   </ul>
+  {% if completed_count > 0 %}
+    <a href="/delete-completed" onclick="return confirm('Tem certeza que deseja deletar {{ completed_count }} tarefa(s) concluída(s)?')">
+      <button>Limpar {{ completed_count }} tarefas concluídas</button>
+    </a>
+  {% endif %}
 </body>
 </html>
